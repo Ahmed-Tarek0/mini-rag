@@ -1,10 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI  # type: ignore[reportMissingImports]
+from dotenv import load_dotenv
+load_dotenv(".env")
+from routes import base
 
 
 app = FastAPI()
 
-@app.get("/welcome")
-def welcome():
-    return {
-        "message": "Welcome to mini-RAG!"
-        }
+app.include_router(base.base_router)
+ 
